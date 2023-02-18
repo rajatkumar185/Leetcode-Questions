@@ -1,0 +1,50 @@
+# Leetcode
+class Solution {
+public:
+    int minMaxDifference(int num) {
+        int temp=num;
+        vector<int>v1;
+        while(temp){
+            v1.push_back(temp%10);
+            temp/=10;
+        }
+        reverse(v1.begin(),v1.end());
+        int ele=v1[0];
+        vector<int>v2=v1;
+        for(int i=0;i<v1.size();i++){
+            if(v1[i]!=9){
+                ele=v1[i];
+                break;
+            }
+        }
+        for(int i=0;i<v1.size();i++){
+            if(v1[i]==ele){
+                v1[i]=9;
+            }
+        }
+        int ele3=v2[0];
+        for(int i=0;i<v2.size();i++){
+            if(v2[i]!=0){
+                ele3=v2[i];
+                break;
+            }
+        }
+        for(int i=0;i<v2.size();i++){
+            if(v2[i]==ele3){
+                v2[i]=0;
+            }
+        }
+        string str1="";
+        string str2="";
+        for(int i=0;i<v1.size();i++){
+            str1+=to_string(v1[i]);
+        }
+        for(int i=0;i<v2.size();i++){
+            str2+=to_string(v2[i]);
+        }
+        int ele1=stoi(str1);
+        int ele2=stoi(str2);
+        return ele1-ele2;
+        
+    }
+};
