@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int maximalNetworkRank(int n, vector<vector<int>>& roads) {
+
+        unordered_map<int,int> freq;
+        vector<vector<int>> adjmat(n, vector<int>(n,0));
+
+        for(auto it: roads){
+            freq[it[0]]++;
+            freq[it[1]]++;
+
+            adjmat[it[0]][it[1]]=1;
+            adjmat[it[1]][it[0]]=1;
+          
+        }
+
+        int maxrank=0;
+
+        for(int i=0; i<n; i++){
+            for(int j=i+1; j<n; j++){
+                
+                int val = (freq[i] + freq[j]);
+                if(adjmat[i][j]==1){
+                    val=val-1;
+                }
+                maxrank = max( maxrank, val);
+            }
+        }
+
+        return maxrank;
+  
+    }
+};
