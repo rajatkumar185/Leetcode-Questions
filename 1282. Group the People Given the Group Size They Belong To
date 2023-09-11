@@ -1,0 +1,41 @@
+class Solution {
+
+public:
+
+    vector<vector<int>> groupThePeople(vector<int>& gS) {
+
+        map<int,vector<int>>m;
+
+        int i = 0;
+
+        for(auto &sz: gS) m[sz].push_back(i++);
+
+        vector<vector<int>>ans;
+
+        for(auto &i: m){
+
+            vector<int>temp;
+
+            for(int j = 0; j < i.second.size(); ++j) {
+
+                if(temp.size() == i.first){
+
+                    ans.push_back(temp);
+
+                    temp.clear();
+
+                }
+
+                temp.push_back(i.second[j]);
+
+            }
+
+            ans.push_back(temp);
+
+        }
+
+        return ans;
+
+    }
+
+};
