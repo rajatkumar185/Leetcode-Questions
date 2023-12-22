@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int maxScore(string s) {
+        int ans=0;
+        vector<int>v(s.size(),0);
+        int one=0;
+        for(int i=s.size()-1;i>=0;i--){
+            if(s[i]=='1'){
+                
+                one++;
+                v[i]=one;
+                }
+            else{
+                v[i]=one;
+                }
+            }
+            int zero=0;
+        for(int i=0;i<s.size()-1;i++){
+                if(s[i]=='0'){
+                    zero++;
+                    
+                    }
+ans=max(ans,zero+v[i+1]);
+       
+            }
+            return ans;
+    }
+};
