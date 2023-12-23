@@ -1,0 +1,50 @@
+class Solution {
+public:
+    bool isPathCrossing(string path) {
+        map<pair<int, int>, int> dic;
+
+        dic[{0, 0}]++;
+
+        int x = 0, y = 0;
+
+        for(char c : path) {
+
+            switch(c) {
+
+                case 'N': 
+
+                    y++;
+
+                    break;
+
+                case 'S': 
+
+                    y--;
+
+                    break;
+
+                case 'E': 
+
+                    x++;
+
+                    break;
+
+                case 'W': 
+
+                    x--;
+
+                    break;
+
+            }
+
+            if(dic.count({x, y})) return true;
+
+            dic[{x, y}]++;
+
+        }
+
+        return false;
+                  
+          
+    }
+};
